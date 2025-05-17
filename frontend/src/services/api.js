@@ -12,3 +12,9 @@ export async function fetchSessions() {
   return res.data;
 }
 
+export const getReceiptByMentor = async (mentorId) => {
+  const res = await fetch(`/api/receipts/${mentorId}`);
+  if (!res.ok) throw new Error('Failed to fetch receipt');
+  return res.json();
+};
+

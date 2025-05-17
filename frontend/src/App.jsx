@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Mentors from './pages/Mentors'
 import Sessions from './pages/Sessions'
+import Receipt from './pages/Receipt';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/mentors" element={<Mentors />} />
             <Route path="/sessions" element={<Sessions />} />
+            <Route path="/receipt/:id" element={<Receipt />} />
           </Routes>
         </main>
       </div>
