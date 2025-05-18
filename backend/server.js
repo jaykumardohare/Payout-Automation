@@ -12,6 +12,13 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+const corsOptions = {
+  origin: [
+    'https://payout-automation-frontend.onrender.com', // Your frontend URL
+    'http://localhost:5173' // For local testing
+  ]
+};
+app.use(cors(corsOptions));
 app.use(cors());
 
 app.use("/api/mentors", mentorRoutes);
