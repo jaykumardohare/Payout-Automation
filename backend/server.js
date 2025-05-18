@@ -14,12 +14,22 @@ const app = express();
 app.use(express.json());
 const corsOptions = {
   origin: [
-    'https://payout-automation-frontend.onrender.com',
-    'http://localhost:5173'
+    'https://payout-automation-frontend.onrender.com', // your production frontend
+    'http://localhost:5000' // your local development
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 };
+// Add this middleware right after CORS setup
+app.use((req, res, next) => {
+  console.log('Incoming request:', req.method, req.url);
+  console.log('Origin:', req.headers.origin);
+  next();
+});
+
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Pre-flight request handling
 
 app.use("/api/mentors", mentorRoutes);
 app.use("/api/sessions", sessionRoutes);
