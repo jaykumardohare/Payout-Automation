@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://payout-automation.onrender.com";
 
 export async function fetchMentors() {
   const res = await axios.get(`${BASE_URL}/mentors`);
